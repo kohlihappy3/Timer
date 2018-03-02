@@ -25,7 +25,7 @@ public class Timer extends AppCompatActivity {
     CountDownTimer c;
     Calendar cal;
     SimpleDateFormat sdf;
-    String date;
+    String Date;
     MediaPlayer play;
 
 
@@ -67,9 +67,10 @@ public class Timer extends AppCompatActivity {
                     stop.setEnabled(true);
                     cal=Calendar.getInstance();
                     sdf=new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
-                    date=sdf.format(cal.getTime());
-                    t=new CountDownTimer(VaryVal*1000,1000){
-                        String starttime=String.format("%02d:%02d:%02d",TimeUnit.MILLISECONDS.toHours(VaryVal*1000),TimeUnit.MILLISECONDS.toMinutes(VaryVal*1000)-TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(VaryVal*1000)),TimeUnit.MILLISECONDS.toSeconds(VaryVal*1000)-TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(VaryVal*1000)));
+                    Date=sdf.format(cal.getTime());
+
+                    c=new CountDownTimer(VaryVal*1000,1000){
+                        String starttime= String.format("%02d:%02d:%02d",TimeUnit.MILLISECONDS.toHours(VaryVal*1000),TimeUnit.MILLISECONDS.toMinutes(VaryVal*1000)-TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(VaryVal*1000)),TimeUnit.MILLISECONDS.toSeconds(VaryVal*1000)-TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(VaryVal*1000)));
 
                         @Override
                         public void onTick(long millisUntilFinished) {
@@ -80,12 +81,13 @@ public class Timer extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
+
                             s.setProgress(0);
                             t.setText("00:00:00");
                             start.setEnabled(true);
                             stop.setEnabled(false);
-                            recordtime(starttime,date);
-                            play=MediaPlayer.create(getApplicationContext(),R.raw);
+                            recordtime(starttime,Date);
+                            play=MediaPlayer.create(getApplicationContext(),R.raw.iphone_5_original);
                             play.start();
 
 
@@ -109,6 +111,7 @@ public class Timer extends AppCompatActivity {
                 s.setProgress(0);
                 t.setText("00:00:00");
 
+
             }
         });
 
@@ -117,8 +120,8 @@ public class Timer extends AppCompatActivity {
         try{
             SQLiteDatabase db=this.openOrCreateDatabase("AppDb",MODE_PRIVATE,null);
             db.execSQL("CREATE TABLE IF NOT EXISTS timer(date VARCHAR, time VARCHAR)");
-            Log.i("date:",date);
-            db.execSQL("INSERT INTO AppDb(date,time) VALUES(' " +date+ " ',' " +time+ " ')");
+            Log.i("Date:",date);
+            db.execSQL("INSERT INTO timer(date,time) VALUES(' " +date+ " ',' " +time+ " ')");
             Toast.makeText(this,"TASK IS DONE AND SUBMITTED",Toast.LENGTH_LONG).show();
         }
         catch(Exception e){

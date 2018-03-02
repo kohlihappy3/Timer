@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.192" />
 
     <Button
         android:id="@+id/start"
@@ -38,10 +38,9 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/t1"
-        app:layout_constraintVertical_bias="0.454"
+        app:layout_constraintVertical_bias="0.272"
         tools:background="@android:color/black" />
 
     <Button
@@ -57,10 +56,9 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toEndOf="@+id/start"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.751"
+        app:layout_constraintVertical_bias="0.9"
         tools:background="@android:color/black" />
 
     <SeekBar
@@ -68,14 +66,14 @@
         android:layout_width="360dp"
         android:layout_height="49dp"
         tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="45dp" />
+        tools:layout_editor_absoluteY="30dp" />
 
     <SeekBar
         android:id="@+id/seekBar2"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:max="10"
+        android:max="3600"
         android:progress="3"
         tools:layout_editor_absoluteX="197dp"
         tools:layout_editor_absoluteY="524dp" />

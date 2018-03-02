@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TList extends AppCompatActivity {
     ListView Tlist;
-    ArrayList<String> time;
+    ArrayList<String> Timer;
     ArrayAdapter<String> ada;
 
     @Override
@@ -23,22 +23,22 @@ public class TList extends AppCompatActivity {
     }
     void gettimerlist()
     {
-        time=new ArrayList<String>();
+        Timer=new ArrayList<String>();
         try{
             SQLiteDatabase db=this.openOrCreateDatabase("TimeDataBase",MODE_PRIVATE,null);
-            Cursor c=db.rawQuery("Select * From timer",null);
+            Cursor c=db.rawQuery("Select * from timer",null);
             c.moveToFirst();
             int index=c.getColumnIndex("Time");
             int index2=c.getColumnIndex("Date");
             while(c!=null){
-                time.add("\n Timer Set :- " +c.getString(index)+"\n On Date :- " +c.getString(index2)+"\n");
+                Timer.add("\n Timer Set :- " +c.getString(index)+"\n On Date :- " +c.getString(index2)+"\n");
                 c.moveToNext();
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         finally {
-            ada=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,time);
+            ada=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,Timer);
             Tlist.setAdapter(ada);
         }
 
