@@ -120,8 +120,8 @@ public class Timer extends AppCompatActivity {
         try{
             SQLiteDatabase db=this.openOrCreateDatabase("AppDb",MODE_PRIVATE,null);
             db.execSQL("CREATE TABLE IF NOT EXISTS timer(date VARCHAR, time VARCHAR)");
-            Log.i("Date:",date);
-            db.execSQL("INSERT INTO timer(date,time) VALUES(' " +date+ " ',' " +time+ " ')");
+            Log.i("date:",date);
+            db.execSQL("INSERT INTO timer(date , time) VALUES('"+date+"','"+time+"')");
             Toast.makeText(this,"TASK IS DONE AND SUBMITTED",Toast.LENGTH_LONG).show();
         }
         catch(Exception e){

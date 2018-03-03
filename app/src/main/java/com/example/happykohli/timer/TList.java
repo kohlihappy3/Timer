@@ -25,11 +25,11 @@ public class TList extends AppCompatActivity {
     {
         Timer=new ArrayList<String>();
         try{
-            SQLiteDatabase db=this.openOrCreateDatabase("TimeDataBase",MODE_PRIVATE,null);
+            SQLiteDatabase db=this.openOrCreateDatabase("AppDb",MODE_PRIVATE,null);
             Cursor c=db.rawQuery("Select * from timer",null);
             c.moveToFirst();
-            int index=c.getColumnIndex("Time");
-            int index2=c.getColumnIndex("Date");
+            int index=c.getColumnIndex("time");
+            int index2=c.getColumnIndex("date");
             while(c!=null){
                 Timer.add("\n Timer Set :- " +c.getString(index)+"\n On Date :- " +c.getString(index2)+"\n");
                 c.moveToNext();
