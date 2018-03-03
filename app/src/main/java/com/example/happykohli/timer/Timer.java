@@ -66,7 +66,7 @@ public class Timer extends AppCompatActivity {
                     start.setEnabled(false);
                     stop.setEnabled(true);
                     cal=Calendar.getInstance();
-                    sdf=new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+                    sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                     Date=sdf.format(cal.getTime());
 
                     c=new CountDownTimer(VaryVal*1000,1000){
@@ -118,10 +118,10 @@ public class Timer extends AppCompatActivity {
     }
     void recordtime(String time,String date){
         try{
-            SQLiteDatabase db=this.openOrCreateDatabase("AppDb",MODE_PRIVATE,null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS timer(date VARCHAR, time VARCHAR)");
+            SQLiteDatabase db=this.openOrCreateDatabase("RECORD",MODE_PRIVATE,null);
+            db.execSQL("CREATE TABLE IF NOT EXISTS data(date VARCHAR, time VARCHAR)");
             Log.i("date:",date);
-            db.execSQL("INSERT INTO timer(date , time) VALUES('"+date+"','"+time+"')");
+            db.execSQL("INSERT INTO data(date , time) VALUES('"+date+"','"+time+"')");
             Toast.makeText(this,"TASK IS DONE AND SUBMITTED",Toast.LENGTH_LONG).show();
         }
         catch(Exception e){

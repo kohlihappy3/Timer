@@ -25,8 +25,8 @@ public class TList extends AppCompatActivity {
     {
         Timer=new ArrayList<String>();
         try{
-            SQLiteDatabase db=this.openOrCreateDatabase("AppDb",MODE_PRIVATE,null);
-            Cursor c=db.rawQuery("Select * from timer",null);
+            SQLiteDatabase db=this.openOrCreateDatabase("RECORD",MODE_PRIVATE,null);
+            Cursor c=db.rawQuery("Select * from data",null);
             c.moveToFirst();
             int index=c.getColumnIndex("time");
             int index2=c.getColumnIndex("date");
